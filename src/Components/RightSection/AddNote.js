@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 
-function AddNote({ newNoteViewHandler, submitNote }) {
-    const [noteTitle, setNoteTitle] = useState("")
-    const [notePurpose, setNotePurpose] = useState("")
-    const [noteCategory, setNoteCategory] = useState("")
-    const [note, setNote] = useState("")
+function AddNote({ newNoteViewHandler, submitNote, edit, submitEditedNote }) {
+    const [noteTitle, setNoteTitle] = useState(edit.mode ? edit.note.noteTitle : "")
+    const [notePurpose, setNotePurpose] = useState(edit.mode ? edit.note.notePurpose : "")
+    const [noteCategory, setNoteCategory] = useState(edit.mode ? edit.note.noteCategory : "")
+    const [note, setNote] = useState(edit.mode ? edit.note.note : "")
 
     const [onError, setOnError] = useState(false)
 
@@ -33,15 +33,19 @@ function AddNote({ newNoteViewHandler, submitNote }) {
 
         // Random number is generated like thid just for testing so an error might occur if a number is repeated
         const noteObject = { noteTitle, notePurpose, noteCategory, note, date: new Date(), id: (Math.random() + Math.random()).toString() }
+
+        if (edit.mode) {
+            return submitEditedNote({ ...noteObject, id: edit.note.id })
+        }
+
         submitNote(noteObject)
-        newNoteViewHandler(false)
     }
 
     return (
         <div className="newNote">
             <div className="innerNewNote h-100 p-4">
                 <div className="header d-flex justify-content-between align-items-center">
-                    <h5>New Note</h5>
+                    <h5>{edit.mode ? "Edit" : "New"} Note</h5>
                     <img onClick={() => newNoteViewHandler(false)} alt="" width="10" src="https://ik.imagekit.io/36h35rdxx/Vector_pa1Qr-2e6u.png?ik-sdk-version=javascript-1.4.3&updatedAt=1653657497834" />
                 </div>
                 <form onSubmit={submitNoteHandler} className="mt-5">
@@ -60,7 +64,7 @@ function AddNote({ newNoteViewHandler, submitNote }) {
                     <textarea value={note} onChange={noteHandler} rows="5" className="w-100 mb-4 px-3 py-3" placeholder="Add your note here"></textarea>
                     <div className="mt-5 controls w-100 d-flex justify-content-between">
                         <button onClick={() => newNoteViewHandler(false)} className="cancel py-3">Cancel</button>
-                        <button className="create py-3">Create</button>
+                        <button className="create py-3">{edit.mode ? "Edit" : "Create"} Note</button>
                     </div>
                 </form>
             </div>
