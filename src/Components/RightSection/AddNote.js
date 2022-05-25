@@ -45,7 +45,8 @@ function AddNote({ newNoteViewHandler, submitNote }) {
                     <img onClick={() => newNoteViewHandler(false)} alt="" width="10" src="https://ik.imagekit.io/36h35rdxx/Vector_pa1Qr-2e6u.png?ik-sdk-version=javascript-1.4.3&updatedAt=1653657497834" />
                 </div>
                 <form onSubmit={submitNoteHandler} className="mt-5">
-                    {onError &&
+                    {
+                        onError &&
                         <div className="alert alert-danger alert-dismissible fade show" role="alert">
                             <strong>Invalid Inputs!</strong> You should check in on some of those fields below.
                             <button onClick={() => setOnError(false)} type="button" className="close" data-dismiss="alert" aria-label="Close">
