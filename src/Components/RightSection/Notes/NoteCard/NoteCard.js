@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react"
 import NoteCardOption from "./NoteCardOption"
-import ViewNote from "./ViewNote"
 
 const NoteCard = React.memo(props => {
-    const { note, deleteNote, editNote } = props
+    const { note, deleteNote, editNote, setViewNoteMode } = props
 
     const [color, setColor] = useState("")
     useEffect(() => {
@@ -15,11 +14,9 @@ const NoteCard = React.memo(props => {
     const year = note.date.getFullYear()
 
     const [openOptionView, setOpenOptionView] = useState(false)
-    const [viewMode, setViewMode] = useState(false)
 
     return (
         <>
-            {viewMode && <ViewNote note={note} closeViewUi={() => setViewMode(false)} />}
             <div className="item col-12 col-md-6 col-lg-4 mb-4">
                 <div className="inner p-3">
                     <div className="item-header d-flex align-items-center">
@@ -38,7 +35,7 @@ const NoteCard = React.memo(props => {
                                 <div className={`tag-name ${color}`}>{note.noteCategory}</div>
                             </div>
                             <img onClick={() => { setOpenOptionView(!openOptionView) }} alt="" width="20" src="https://ik.imagekit.io/36h35rdxx/Vector__2__CzoDS1hgJ.png?ik-sdk-version=javascript-1.4.3&updatedAt=1653604653699" />
-                            {openOptionView && <NoteCardOption id={note.id} deleteNote={deleteNote} viewNote={() => { setViewMode(true); setOpenOptionView(false) }} editNote={() => { editNote(note.id); setOpenOptionView(false) }} />}
+                            {openOptionView && <NoteCardOption id={note.id} deleteNote={deleteNote} viewNote={() => { setViewNoteMode(() => ({ mode: true, note: note })); setOpenOptionView(false) }} editNote={() => { editNote(note.id); setOpenOptionView(false) }} />}
                         </div>
                     </div>
                 </div>

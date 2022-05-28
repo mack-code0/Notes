@@ -155,6 +155,54 @@ section::-webkit-scrollbar {
   color: #434d64;
   border-bottom: 1px solid #eeecf6;
 }
+
+/* table */
+table{
+  background-color: #fff;
+  border-radius: 10px;
+  font-size: 12px;
+}
+tr{
+  border-bottom: 1px solid #e7e8eb;
+}
+tr:hover{
+  cursor: pointer;
+}
+tr:nth-last-child(1){
+  border: none;
+}
+.table-head{
+  border-bottom: 2px solid #e7e8eb !important;
+}
+th, td{
+  padding: 20px !important;
+  border: none !important;
+}
+td button{
+  font-size: 12px !important;
+  background: none !important;
+  color: #5141A4 !important;
+  border: 1px solid #5141A4 !important;
+  transition: all 0.2s;
+}
+td button:hover{
+  color: #fff !important;
+  background-color: #5141A4 !important;
+}
+.listViewProfilePic{
+  width: 50px; height: 50px;
+  border-radius: 30px;
+  background-color: red;
+}
+.listViewProfileInfo h5{
+  font-size: 14px;
+  font-weight:800;
+}
+.listViewProfileInfo h6{
+  font-size: 12px;
+}
+
+
 .tag .circle {
   width: 20px;
   height: 20px;

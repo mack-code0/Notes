@@ -5,6 +5,7 @@ import TopSection from './RightSection/TopSection'
 import TopTitle from "./RightSection/TopTitle"
 
 function RightSection({ openSideNavHandler }) {
+  const [listView, setListView] = useState(false)
   const [notes, setNotes] = useState([])
   const [createNoteView, setCreateNoteView] = useState(false)
   const [edit, setEdit] = useState({
@@ -51,9 +52,9 @@ function RightSection({ openSideNavHandler }) {
         <div className="rightContentHolder">
           <TopSection openSideNavHandler={openSideNavHandler} />
           <div onClick={() => openSideNavHandler(false)}>
-            <TopTitle newNoteViewHandler={newNoteViewHandler} />
+            <TopTitle newNoteViewHandler={newNoteViewHandler} setListView={setListView} listView={listView} />
             {/* <ViewNote note={notes[0]} /> */}
-            <AllNotes noteList={notes} newNoteViewHandler={newNoteViewHandler} deleteNote={deleteNoteHandler} editNote={editNoteHandler} />
+            <AllNotes listView={listView} noteList={notes} newNoteViewHandler={newNoteViewHandler} deleteNote={deleteNoteHandler} editNote={editNoteHandler} />
           </div>
         </div>
       </section>
