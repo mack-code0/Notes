@@ -116,7 +116,7 @@ section::-webkit-scrollbar {
 .item-options {
   position: absolute;
   right: 0;
-  bottom: -100px;
+  bottom: -135px;
   background-color: #fff;
   box-shadow: 0px 4px 16px rgba(25, 19, 60, 0.2);
   border-radius: 4px;
