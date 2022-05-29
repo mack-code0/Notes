@@ -78,11 +78,44 @@ section::-webkit-scrollbar {
   font-weight: 500;
   font-size: 20px;
 }
-.topTitle div select {
+/* .topTitle div select {
   border: 1px solid #d0d3d8;
   border-radius: 4px;
   font-size: 14px;
   padding: 15px 24px;
+} */
+.select{
+  border: 1px solid #e7e8eb;
+  border-radius: 5px;
+  font-size: 14px;
+  position: relative;
+  width: 200px;
+}
+.select .options{
+  position: absolute;
+  bottom: -280px;
+  z-index: 1;
+  left: 0;
+  width: 200px;
+  background-color: #fff;
+  box-shadow: 0px 4px 16px rgba(25, 19, 60, 0.2);
+  font-size: 12px;
+}
+.select .options span.optionItem{
+  transition: all 0.1s;
+  cursor: pointer;
+}
+.select .options span.optionItem:hover{
+  color: #5141A4;
+  font-weight: bold;
+}
+.select .options span:nth-child(1),
+.select .options span:nth-child(5){
+  color: #c6cad4;
+}
+.select .options span:nth-child(5){
+  border-top: 1px solid #c6cad4;
+
 }
 
 .topTitle div div span.divider {
